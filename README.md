@@ -52,12 +52,12 @@ The shortcut launches through `conhost --headless`, so no console window appears
 
 **When a prompt appears**, type what you're doing:
 
-| Key | Action |
-|---|---|
-| Enter | Save |
-| Shift+Enter | New line |
+| Key                          | Action                  |
+| ---------------------------- | ----------------------- |
+| Enter                        | Save                    |
+| Shift+Enter                  | New line                |
 | Ctrl+T, or the ☐ Task button | Insert a checklist item |
-| Esc | Skip |
+| Esc                          | Skip                    |
 
 **To log something anytime:** press **Ctrl+Alt+L**, double-click the tray icon, or choose **Log now** from the tray menu.
 
@@ -93,11 +93,11 @@ One file per day, `yyyy-MM-dd.md`, in `yyyy\MM` subfolders under your log folder
 
 Start the first line with `[ ]` (or `- [ ]`) to make the whole entry a checkbox. Start any later line that way to make a sub-task. Both render as real checkboxes in Obsidian.
 
-| Marker | Meaning |
-|---|---|
-| `_[AFK]_` | Idle or screen locked (one marker per stretch away) |
-| `_[skipped]_` | You pressed Esc |
-| `_[no entry]_` | The prompt timed out with nothing typed |
+| Marker         | Meaning                                             |
+| -------------- | --------------------------------------------------- |
+| `_[AFK]_`      | Idle or screen locked (one marker per stretch away) |
+| `_[skipped]_`  | You pressed Esc                                     |
+| `_[no entry]_` | The prompt timed out with nothing typed             |
 
 Anything you typed is saved even if the prompt times out or closes because you locked the screen. Only Esc discards it.
 
@@ -110,6 +110,10 @@ Fine in Obsidian, VS Code, and Notepad++: they pick up new entries automatically
 Avoid plain Notepad. It doesn't reload, so saving from it overwrites entries added since you opened the file.
 
 ## Tray menu
+
+![](C:\Users\mhelphingstine\AppData\Roaming\marktext\images\d2526080db8e96abdf9beebf95f47a4f1344c426.png)
+
+
 
 Right-click the icon. On Windows 11 it may land in the `^` overflow; drag it onto the taskbar to keep it visible. Hover over it to see when the next prompt is due.
 
@@ -125,17 +129,17 @@ Right-click the icon. On Windows 11 it may land in the `^` overflow; drag it ont
 
 Stored in `DailyLog.settings.json` next to the script and created on first run. `DailyLog.settings.example.json` shows every setting; you can copy it to `DailyLog.settings.json` and edit it before first launch instead of using the folder picker. Interval, folder, and toggles can be changed from the tray menu; the rest by editing the file. **Exit and relaunch** after editing.
 
-| Setting | Default | Notes |
-|---|---|---|
-| `LogFolder` | (chosen on first run) | Root folder for log files |
-| `SubfolderFormat` | `yyyy\MM` | Subfolders under `LogFolder`. `""` puts every file directly in `LogFolder`. In JSON the backslash is doubled: `"yyyy\\MM"`. |
-| `IntervalMinutes` | `20` | Time between prompts |
-| `IdleMinutes` | `15` | Idle this long = `[AFK]` instead of a prompt |
-| `GrowDelaySec` | `60` | Grace period before a prompt starts growing |
-| `GrowMinutes` | `10` | Time to grow to full screen |
-| `SkipWeekends` | `true` | |
-| `Chime` | `true` | Sound on scheduled prompts |
-| `Hotkey` | `Ctrl+Alt+L` | `Ctrl`, `Alt`, `Shift`, `Win` plus one key, e.g. `Ctrl+Shift+J`, `Ctrl+Alt+F9`. `""` disables it. |
+| Setting           | Default               | Notes                                                                                                                       |
+| ----------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `LogFolder`       | (chosen on first run) | Root folder for log files                                                                                                   |
+| `SubfolderFormat` | `yyyy\MM`             | Subfolders under `LogFolder`. `""` puts every file directly in `LogFolder`. In JSON the backslash is doubled: `"yyyy\\MM"`. |
+| `IntervalMinutes` | `20`                  | Time between prompts                                                                                                        |
+| `IdleMinutes`     | `15`                  | Idle this long = `[AFK]` instead of a prompt                                                                                |
+| `GrowDelaySec`    | `60`                  | Grace period before a prompt starts growing                                                                                 |
+| `GrowMinutes`     | `10`                  | Time to grow to full screen                                                                                                 |
+| `SkipWeekends`    | `true`                |                                                                                                                             |
+| `Chime`           | `true`                | Sound on scheduled prompts                                                                                                  |
+| `Hotkey`          | `Ctrl+Alt+L`          | `Ctrl`, `Alt`, `Shift`, `Win` plus one key, e.g. `Ctrl+Shift+J`, `Ctrl+Alt+F9`. `""` disables it.                           |
 
 If the hotkey is already taken by another app, the startup notification says so. Pick another one.
 
@@ -149,13 +153,13 @@ If the running copy has stopped responding, a new launch waits two seconds, ends
 
 ## Files
 
-| File | Purpose |
-|---|---|
-| `DailyLogTray.ps1` | The app |
-| `DailyLog.settings.example.json` | Example settings, for reference |
-| `DailyLog.settings.json` | Your settings (created on first run) |
-| `DailyLog.errors.log` | Errors, since there's no console to show them |
-| `DailyLog.pid` | ID of the running instance, used for recovery |
+| File                             | Purpose                                       |
+| -------------------------------- | --------------------------------------------- |
+| `DailyLogTray.ps1`               | The app                                       |
+| `DailyLog.settings.example.json` | Example settings, for reference               |
+| `DailyLog.settings.json`         | Your settings (created on first run)          |
+| `DailyLog.errors.log`            | Errors, since there's no console to show them |
+| `DailyLog.pid`                   | ID of the running instance, used for recovery |
 
 The last three are per-user and shouldn't be committed.
 
@@ -164,6 +168,7 @@ The last three are per-user and shouldn't be committed.
 - **Something isn't working:** check `DailyLog.errors.log` first.
 - **"Running scripts is disabled":** run `Unblock-File` on the script. If your organization enforces an execution policy, the script may need to be signed or allowed by IT.
 - **No tray icon:** check the `^` overflow. To confirm it's running:
+
   ```powershell
   Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" | Where-Object CommandLine -like '*DailyLogTray*'
   ```
