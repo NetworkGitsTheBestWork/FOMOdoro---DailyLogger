@@ -1,7 +1,7 @@
 {
-    "LogFolder":  "C:\\Github Repos\\NetworkGitsTheBestWork\\Vault 22481\\00 Daily Scratchpad",
+    "LogFolder":  "C:\\Users\\you\\Documents\\Vault\\00 Daily Scratchpad",
     "SubfolderFormat":  "yyyy\\MM",
-    "IntervalMinutes":  15,
+    "IntervalMinutes":  20,
     "IdleMinutes":  15,
     "GrowDelaySec":  60,
     "GrowMinutes":  10,
